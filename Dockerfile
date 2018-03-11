@@ -1,10 +1,10 @@
-FROM ubuntu:14.04
+FROM ubuntu:16.04
 
+MAINTAINER <annh1892@gmail.com>
 WORKDIR .  /app
 
-ADD . /app
-CMD sudo apt-get update \
-              apt-get install nginx \
-                service nginx start 
+RUN apt-get update
+RUN apt-get install -y nginx 
+ENTRYPOINT ["/usr/sbin/nginx","-g","daemon off;"]
 
-EXPOSE 80
+EXPOSE 80 
